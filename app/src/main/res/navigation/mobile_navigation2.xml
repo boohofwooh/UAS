@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/navigation_dashboard_admin">
+
+    <fragment
+        android:id="@+id/navigation_dashboard_admin"
+        android:name="com.example.uas.admin.AddStationFragment"
+        android:label="Admin"
+        tools:layout="@layout/fragment_dashboard_admin" />
+
+    <fragment
+        android:id="@+id/navigation_add_station"
+        android:name="com.example.uas.admin.DashboardAdminFragment"
+        android:label="Station"
+        tools:layout="@layout/fragment_add_station" />
+
+    <fragment
+        android:id="@+id/navigation_account_admin"
+        android:name="com.example.uas.admin.AdminAccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account_admin" />
+</navigation>

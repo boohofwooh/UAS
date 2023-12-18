@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.AddTripFragment"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textview_tgl_brgkt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Keberangkatan"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CalendarView
+                android:id="@+id/calendarViewBrgkt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_tgl_brgkt" />
+
+            <TextView
+                android:id="@+id/textview_tgl_kembali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Tanggal Kembali"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textview_tgl_brgkt"
+                app:layout_constraintTop_toBottomOf="@+id/calendarViewBrgkt" />
+
+            <CalendarView
+                android:id="@+id/calendarViewKembali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/calendarViewBrgkt"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="@+id/calendarViewBrgkt"
+                app:layout_constraintTop_toBottomOf="@+id/textview_tgl_kembali" />
+
+            <TextView
+                android:id="@+id/textview_st_Asal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Stasiun Asal"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textview_tgl_kembali"
+                app:layout_constraintTop_toBottomOf="@+id/calendarViewKembali" />
+
+            <Spinner
+                android:id="@+id/spinner_stasiun_awal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/calendarViewKembali"
+                app:layout_constraintStart_toStartOf="@+id/calendarViewKembali"
+                app:layout_constraintTop_toBottomOf="@+id/textview_st_Asal" />
+
+            <TextView
+                android:id="@+id/textView_st_tujuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Stasiun Tujuan"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textview_st_Asal"
+                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+            <Spinner
+                android:id="@+id/spinner_stasiun_tujuan"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/spinner"
+                app:layout_constraintStart_toStartOf="@+id/spinner"
+                app:layout_constraintTop_toBottomOf="@+id/textView_st_tujuan" />
+            <TextView
+                android:id="@+id/textView_kls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Kelas"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView_st_tujuan"
+                app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+            <Spinner
+                android:id="@+id/spinner_kelas"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/spinner2"
+                app:layout_constraintTop_toBottomOf="@+id/textView_kls" />
+
+            <TextView
+                android:id="@+id/textView_kursi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Kursi"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView_kls"
+                app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+
+            <Spinner
+                android:id="@+id/spinner_kursi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/spinner3"
+                app:layout_constraintStart_toStartOf="@+id/spinner3"
+                app:layout_constraintTop_toBottomOf="@+id/textView_kursi" />
+
+            <TextView
+                android:id="@+id/textView_pkt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Paket Tambahan"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView_kursi"
+                app:layout_constraintTop_toBottomOf="@+id/spinner4" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/spinner4"
+                app:layout_constraintStart_toStartOf="@+id/spinner4"
+                app:layout_constraintTop_toBottomOf="@+id/textView_pkt">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ToggleButton
+                        android:id="@+id/tambahan_anak"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOff="Tambahan Anak"
+                        android:textOn="Tambahan Anak"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+
+                    <ToggleButton
+                        android:id="@+id/konsum"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textOff="Konsumsi"
+                        android:textOn="Konsumsi"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+
+                    <ToggleButton
+                        android:id="@+id/internet"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textOff="Internet"
+                        android:textOn="Internet"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+
+                    <ToggleButton
+                        android:id="@+id/bagasi"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textOff="Ekstra Bagasi"
+                        android:textOn="Ekstra Bagasi"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+
+                    <ToggleButton
+                        android:id="@+id/porter"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textOff="Porter"
+                        android:textOn="Porter"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+
+                    <ToggleButton
+                        android:id="@+id/pijat"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textOff="Pijat"
+                        android:textOn="Pijat"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+
+                    <ToggleButton
+                        android:id="@+id/audio"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textOff="Audiovisual"
+                        android:textOn="Audiovisual"
+                        android:background="@drawable/toggle_button_on"
+                        android:textColor="@color/black"
+                        android:textAllCaps="false"
+                        tools:layout_editor_absoluteX="160dp"
+                        tools:layout_editor_absoluteY="1183dp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
+                app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+                <TextView
+                    android:id="@+id/textView_harga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Harga"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/harga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="15dp">
+                <Button
+                    android:id="@+id/btn_add_to_wishlist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_secondary"
+                    android:textColor="@color/black"
+                    android:text="Tambah ke Wishlist"
+                    android:padding="10dp"
+                    android:layout_marginRight="5dp"/>
+                <Button
+                    android:id="@+id/btn_pesan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    android:text="Pesan"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tanggalBrgkt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/tanggalKembali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

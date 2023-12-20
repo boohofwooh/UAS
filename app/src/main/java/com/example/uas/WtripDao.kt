@@ -9,16 +9,16 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface TripDao {
+interface WtripDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(wTrip: wTrip)
+    fun insert(trips: Trips)
 
     @Update
-    fun update(wTrip: wTrip)
+    fun update(trips: Trips)
 
     @Delete
-    fun delete(wTrip: wTrip)
+    fun delete(trips: Trips)
 
-    @Query("SELECT * from wtrip_table ORDER BY id ASC")
-    fun getAllClasses(): LiveData<List<wTrip>>
+    @get:Query("SELECT * from trip_table ORDER BY id ASC")
+    val allClasses: LiveData<List<Trips>>
 }

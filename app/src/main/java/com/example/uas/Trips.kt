@@ -5,8 +5,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "wtrip_table")
-data class wTrip (
+@Entity(tableName = "trip_table")
+data class Trips (
     @PrimaryKey(autoGenerate = true)
     @NonNull
     val id: Int = 0,

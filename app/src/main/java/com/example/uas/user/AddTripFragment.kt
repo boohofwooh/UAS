@@ -1,6 +1,5 @@
 package com.example.uas.user
 
-import TripRoomDatabase
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -20,11 +19,11 @@ import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.uas.R
-import com.example.uas.TripDao
+import com.example.uas.Trips
+import com.example.uas.TripsRoomDatabase
+import com.example.uas.WtripDao
 import com.example.uas.data.Trip
 import com.example.uas.databinding.FragmentAddTripBinding
-import com.example.uas.wTrip
-import com.example.uas.wTripAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 import java.util.concurrent.ExecutorService
@@ -33,6 +32,7 @@ import java.util.concurrent.Executors
 
 class AddTripFragment : Fragment() {
     private var _binding: FragmentAddTripBinding? = null
+    private lateinit var mTripDao: WtripDao
     private val binding get() = _binding!!
     private val channelId = "TEST_NOTIF"
     private val notifId = 90
@@ -40,8 +40,9 @@ class AddTripFragment : Fragment() {
     private val firestore = FirebaseFirestore.getInstance()
     private val stasiunCollectionRef = firestore.collection("station")
     private val tripcollectionRef = firestore.collection("trip")
-    private var wTripDao: TripDao? = null
     private lateinit var executorService: ExecutorService
+
+
 
     val spinnerKelasKereta = arrayOf("Ekonomi", "Eksekutif", "Bisnis")
     val spinnerKursiKereta = arrayOf("A1", "A2", "A3", "A4", "A5","B1", "B2", "B3", "B4", "B5", "C1", "C2", "C3", "C4", "C5")
@@ -63,8 +64,9 @@ class AddTripFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val notifManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        wTripDao = TripRoomDatabase.getInstance(requireContext()).tripDao()
         with(binding) {
+            executorService = Executors.newSingleThreadExecutor()
+            mTripDao = TripsRoomDatabase.getInstance(requireContext()).tripsDao()
             val listPaket = mutableListOf<String>()
             val cal = Calendar.getInstance()
 
@@ -309,10 +311,7 @@ class AddTripFragment : Fragment() {
                 val stasiun_awal = spinnerStasiunAwal.selectedItem.toString()
                 val stasiun_tujuan = spinnerStasiunTujuan.selectedItem.toString()
 
-                insert(
-                    wTrip(tgl_brgkt = tgl_brgkt, tgl_kembali = tgl_kembali,
-                    st_awal = stasiun_awal, st_tujuan = stasiun_tujuan)
-                )
+                insert(Trips(tgl_brgkt = tgl_brgkt, tgl_kembali = tgl_kembali, st_awal = stasiun_awal, st_tujuan = stasiun_tujuan))
 
                 findNavController().navigateUp()
             }
@@ -355,16 +354,15 @@ class AddTripFragment : Fragment() {
         }
     }
 
-    private fun insert(wTrip: wTrip){
-        executorService.execute {
-            wTripDao?.insert(wTrip)
-        }
-    }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun insert(trips: Trips){
+        executorService.execute {
+            mTripDao.insert(trips)
+        }
     }
 
 

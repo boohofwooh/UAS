@@ -9,5 +9,6 @@ data class Trip(
     val kelas: String = "",
     val kursi: String = "",
     val harga: String = "",
+    val username: String = "",
     val list_paket: List<String> = emptyList()
 )

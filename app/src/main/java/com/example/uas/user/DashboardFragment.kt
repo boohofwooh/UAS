@@ -1,5 +1,6 @@
 package com.example.uas.user
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,7 +67,12 @@ class DashboardFragment : Fragment() {
     }
 
     private fun observeTripsChanges() {
-        tripcollectionRef.addSnapshotListener { snapshots, error ->
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefsFile", Context.MODE_PRIVATE)
+        val sharedUsername = sharedPreferences.getString("username", "")
+
+        val username = sharedUsername.toString()
+
+        tripcollectionRef.whereEqualTo("username", username).addSnapshotListener { snapshots, error ->
             if (error != null) {
                 Log.d("DashboardFragment", "Error listening for trip changes:", error)
                 return@addSnapshotListener
@@ -77,6 +83,7 @@ class DashboardFragment : Fragment() {
                 tripListLiveData.postValue(trips)
             }
         }
+
     }
 
     private fun observeTrips() {

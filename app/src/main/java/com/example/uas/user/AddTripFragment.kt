@@ -63,6 +63,8 @@ class AddTripFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefsFile", Context.MODE_PRIVATE)
+        val sharedusername = sharedPreferences.getString("username","")
         val notifManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         with(binding) {
             executorService = Executors.newSingleThreadExecutor()
@@ -111,7 +113,7 @@ class AddTripFragment : Fragment() {
                     val stasiunList = mutableListOf<String>()
 
                     for (document in documents) {
-                        val stasiun = document.getString("station")
+                        val stasiun = document.getString("itstation")
                         stasiun?.let {
                             stasiunList.add(it)
                         }
@@ -265,9 +267,10 @@ class AddTripFragment : Fragment() {
                 val kursi = spinnerKursi.selectedItem.toString()
                 val kelas = spinnerKelas.selectedItem.toString()
                 val harga = harga.text.toString()
+                val username = sharedusername.toString()
 
                 val newTrip = Trip(tgl_brgkt = tgl_brgkt, tgl_kembali = tgl_kembali, st_awal = stasiun_awal,
-                    st_tujuan = stasiun_tujuan, kursi = kursi, kelas = kelas, harga = harga, list_paket = listPaket)
+                    st_tujuan = stasiun_tujuan, kursi = kursi, kelas = kelas, harga = harga, list_paket = listPaket, username = username)
                 addTrip(newTrip)
                 val flag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                     PendingIntent.FLAG_MUTABLE

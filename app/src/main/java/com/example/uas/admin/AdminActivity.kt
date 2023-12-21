@@ -27,10 +27,15 @@ class AdminActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_dashboard_admin, R.id.navigation_add_station, R.id.navigation_account_admin
+                R.id.navigation_admin, R.id.navigation_station, R.id.navigation_account_admin
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_activity_admin2)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

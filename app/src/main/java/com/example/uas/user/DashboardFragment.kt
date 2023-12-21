@@ -37,8 +37,6 @@ class DashboardFragment : Fragment() {
         tripAdapter = TripAdapter(
             onClickTrip = { }, onDelete = { }, onEdit = {}
         )
-        binding.rvPerjalanan.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvPerjalanan.adapter = tripAdapter
         return root
     }
 

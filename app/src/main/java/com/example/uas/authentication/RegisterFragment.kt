@@ -31,6 +31,7 @@ class RegisterFragment : Fragment() {
         val phone = binding.phone
         val password = binding.password
         val button = binding.registerBtn
+        val login = binding.txtLogin
 
         button.setOnClickListener {
             val stringUsername = username.text.toString()
@@ -50,6 +51,11 @@ class RegisterFragment : Fragment() {
             }
         }
 
+        login.setOnClickListener {
+            val viewPager = (activity as? MainActivity)?.getViewPager()
+            viewPager?.currentItem = 1
+        }
+
 
 
         return view
@@ -58,10 +64,10 @@ class RegisterFragment : Fragment() {
     private fun addUser(users: Users) {
         usercollectionRef.add(users)
             .addOnSuccessListener { documentReference ->
-                val createdClassId = documentReference.id
-                users.id = createdClassId
+                val createUserId = documentReference.id
+                users.id = createUserId
 
-                usercollectionRef.document(createdClassId)
+                usercollectionRef.document(createUserId)
                     .set(users)
                     .addOnSuccessListener {
                         Log.d("RegisterFragment", "User added successfully")

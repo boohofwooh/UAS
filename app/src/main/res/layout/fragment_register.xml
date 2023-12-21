@@ -183,9 +183,11 @@
             android:text="Already Have an Account? "
             android:textSize="12sp"/>
         <TextView
+            android:id="@+id/txt_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="12sp"/>
 

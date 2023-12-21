@@ -284,15 +284,15 @@ class AddTripFragment : Fragment() {
                     requireContext(),
                     channelId
                 ).setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                    .setContentTitle("Travelku")
-                    .setContentText("Rencana perjalanan berhasil ditambahkan")
+                    .setContentTitle("My Train")
+                    .setContentText("Rencana perjalanan berhasil ditambahkan! Ingatlah jadwal perjalanan Anda")
                     .setAutoCancel(true)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setContentIntent(pendingIntent)
 
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
                     val notifChannel = NotificationChannel(
-                        channelId, "Travelku",
+                        channelId, "My Train",
                         NotificationManager.IMPORTANCE_DEFAULT
                     )
                     with(notifManager) {

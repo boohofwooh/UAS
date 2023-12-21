@@ -20,8 +20,6 @@ class LoginFragment : Fragment() {
     private val userCollectionRef = firestore.collection("users")
 
     private lateinit var binding: FragmentLoginBinding
-
-    // SharedPreferences key for storing the user's role and login status
     private val PREFS_NAME = "MyPrefsFile"
     private val USER_ROLE_KEY = "userRole"
     private val IS_LOGGED_IN_KEY = "isLoggedIn"
@@ -40,6 +38,7 @@ class LoginFragment : Fragment() {
         val username = binding.username
         val password = binding.password
         val button = binding.loginBtn
+        val register = binding.txtRegister
 
         button.setOnClickListener {
             val stringUsername = username.text.toString()
@@ -48,7 +47,11 @@ class LoginFragment : Fragment() {
             fetchUserData(stringUsername, stringPassword)
         }
 
-        // Check if the user is already logged in
+        register.setOnClickListener {
+            val viewPager = (activity as? MainActivity)?.getViewPager()
+            viewPager?.currentItem = 0
+        }
+
         if (isLoggedIn()) {
             val userRole = getUserRole()
             handleUserRole(userRole)
